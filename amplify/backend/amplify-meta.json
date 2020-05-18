@@ -1,0 +1,54 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-stockmonitoringdashb-local-201348-authRole",
+			"UnauthRoleArn": "arn:aws:iam::840053255543:role/amplify-stockmonitoringdashb-local-201348-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::840053255543:role/amplify-stockmonitoringdashb-local-201348-authRole",
+			"Region": "ap-south-1",
+			"DeploymentBucketName": "amplify-stockmonitoringdashb-local-201348-deployment",
+			"UnauthRoleName": "amplify-stockmonitoringdashb-local-201348-unauthRole",
+			"StackName": "amplify-stockmonitoringdashb-local-201348",
+			"StackId": "arn:aws:cloudformation:ap-south-1:840053255543:stack/amplify-stockmonitoringdashb-local-201348/084e9780-9916-11ea-8056-0a0d10fbdb46",
+			"AmplifyAppId": "d153wgaowmsddl"
+		}
+	},
+	"auth": {
+		"stockmonitoringdashb41a7f230": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-stockmonitoringdashb-local-201348-deployment/amplify-cfn-templates/auth/stockmonitoringdashb41a7f230-cloudformation-template.yml",
+				"logicalId": "authstockmonitoringdashb41a7f230"
+			},
+			"lastPushTimeStamp": "2020-05-18T14:51:30.212Z",
+			"output": {
+				"AppClientSecret": "raa0vdb3tvukrenv7em8jko7fme9lisoh4gtejpeodimotnah1i",
+				"UserPoolId": "ap-south-1_PYHg1SbLY",
+				"AppClientIDWeb": "74r70vaaiscpma78ol6u1ia688",
+				"AppClientID": "70v4ofa22p2vad1en5ib0edifp",
+				"IdentityPoolId": "ap-south-1:1157d51a-b703-48cc-b269-280b37227cfd",
+				"IdentityPoolName": "stockmonitoringdashb41a7f230_identitypool_41a7f230__local",
+				"UserPoolName": "stockmonitoringdashb41a7f230_userpool_41a7f230"
+			},
+			"lastPushDirHash": "sDrwfuEvBLFA6+3od8f334Ty8lE="
+		}
+	},
+	"api": {
+		"stockmonitoringdashb": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "AMAZON_COGNITO_USER_POOLS",
+				"GraphQLAPIIdOutput": "epircadlojerblfay5kclybpby",
+				"GraphQLAPIEndpointOutput": "https://uk3wmwdijrh5hcpahkxvleeyla.appsync-api.ap-south-1.amazonaws.com/graphql"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-stockmonitoringdashb-local-201348-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apistockmonitoringdashb"
+			},
+			"lastPushTimeStamp": "2020-05-18T14:51:30.212Z",
+			"lastPushDirHash": "uaDeAlTfCl0vRupNqxGnuqshtlw="
+		}
+	}
+}

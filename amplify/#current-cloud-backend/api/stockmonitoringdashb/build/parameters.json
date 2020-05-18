@@ -1,0 +1,14 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "stockmonitoringdashb",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authstockmonitoringdashb41a7f230",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-stockmonitoringdashb-local-201348-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/002d3b5c34833be0570ba42325b5c0ec9d1666ad"
+}

@@ -1,0 +1,248 @@
+type IntradayStockPrice {
+  id: ID!
+  symbol: String!
+  data_timezone: String!
+  data_timestamp: Int!
+  open_price: Float
+  high_price: Float
+  low_price: Float
+  close_price: Float
+  volume: Int
+}
+
+type Subscription {
+  intradayStockPriceCreated(symbol: String): IntradayStockPrice @aws_subscribe(mutations: ["createIntradayStockPrice"])
+}
+
+type StockSymbol {
+  id: ID!
+  symbol: String!
+  owner: String
+}
+
+type StockSymbolConnection {
+  items: [StockSymbol]
+  nextToken: String
+}
+
+type IntradayStockPriceConnection {
+  items: [IntradayStockPrice]
+  nextToken: String
+}
+
+type Query {
+  listAllStockSymbols(limit: Int, nextToken: String): StockSymbolConnection
+  retrieveLatestIntradayPrices(symbol: String, ts: Int, limit: Int, nextToken: String): IntradayStockPriceConnection
+  getIntradayStockPrice(id: ID!): IntradayStockPrice
+  listIntradayStockPrices(filter: ModelIntradayStockPriceFilterInput, limit: Int, nextToken: String): ModelIntradayStockPriceConnection
+  getStockSymbol(id: ID!): StockSymbol
+  listStockSymbols(filter: ModelStockSymbolFilterInput, limit: Int, nextToken: String): ModelStockSymbolConnection
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelIntradayStockPriceConnection {
+  items: [IntradayStockPrice]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelIntradayStockPriceFilterInput {
+  id: ModelIDInput
+  symbol: ModelStringInput
+  data_timezone: ModelStringInput
+  data_timestamp: ModelIntInput
+  open_price: ModelFloatInput
+  high_price: ModelFloatInput
+  low_price: ModelFloatInput
+  close_price: ModelFloatInput
+  volume: ModelIntInput
+  and: [ModelIntradayStockPriceFilterInput]
+  or: [ModelIntradayStockPriceFilterInput]
+  not: ModelIntradayStockPriceFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input CreateIntradayStockPriceInput {
+  id: ID
+  symbol: String!
+  data_timezone: String!
+  data_timestamp: Int!
+  open_price: Float
+  high_price: Float
+  low_price: Float
+  close_price: Float
+  volume: Int
+}
+
+input UpdateIntradayStockPriceInput {
+  id: ID!
+  symbol: String
+  data_timezone: String
+  data_timestamp: Int
+  open_price: Float
+  high_price: Float
+  low_price: Float
+  close_price: Float
+  volume: Int
+}
+
+input DeleteIntradayStockPriceInput {
+  id: ID
+}
+
+type Mutation {
+  createIntradayStockPrice(input: CreateIntradayStockPriceInput!, condition: ModelIntradayStockPriceConditionInput): IntradayStockPrice
+  updateIntradayStockPrice(input: UpdateIntradayStockPriceInput!, condition: ModelIntradayStockPriceConditionInput): IntradayStockPrice
+  deleteIntradayStockPrice(input: DeleteIntradayStockPriceInput!, condition: ModelIntradayStockPriceConditionInput): IntradayStockPrice
+  createStockSymbol(input: CreateStockSymbolInput!, condition: ModelStockSymbolConditionInput): StockSymbol
+  updateStockSymbol(input: UpdateStockSymbolInput!, condition: ModelStockSymbolConditionInput): StockSymbol
+  deleteStockSymbol(input: DeleteStockSymbolInput!, condition: ModelStockSymbolConditionInput): StockSymbol
+}
+
+input ModelIntradayStockPriceConditionInput {
+  symbol: ModelStringInput
+  data_timezone: ModelStringInput
+  data_timestamp: ModelIntInput
+  open_price: ModelFloatInput
+  high_price: ModelFloatInput
+  low_price: ModelFloatInput
+  close_price: ModelFloatInput
+  volume: ModelIntInput
+  and: [ModelIntradayStockPriceConditionInput]
+  or: [ModelIntradayStockPriceConditionInput]
+  not: ModelIntradayStockPriceConditionInput
+}
+
+type ModelStockSymbolConnection {
+  items: [StockSymbol]
+  nextToken: String
+}
+
+input ModelStockSymbolFilterInput {
+  id: ModelIDInput
+  symbol: ModelStringInput
+  owner: ModelStringInput
+  and: [ModelStockSymbolFilterInput]
+  or: [ModelStockSymbolFilterInput]
+  not: ModelStockSymbolFilterInput
+}
+
+input CreateStockSymbolInput {
+  id: ID
+  symbol: String!
+  owner: String
+}
+
+input UpdateStockSymbolInput {
+  id: ID!
+  symbol: String
+  owner: String
+}
+
+input DeleteStockSymbolInput {
+  id: ID
+}
+
+input ModelStockSymbolConditionInput {
+  symbol: ModelStringInput
+  and: [ModelStockSymbolConditionInput]
+  or: [ModelStockSymbolConditionInput]
+  not: ModelStockSymbolConditionInput
+}
+
+input ModelIntKeyConditionInput {
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
